@@ -110,8 +110,20 @@ function nextQuestion() {
     btn.disabled = true
 
     if (index > questions.length - 1) {
-        alert('Your Percentage is ' + ((score / questions.length) * 100).toFixed(2))
+        var r = ((score / questions.length) * 100).toFixed(2)
+        sessionStorage.setItem('result',r)
+        if (r >= 70) {
+            location.href = "success.html";
+        } 
+        else {
+            
+            location.href = "lowscore.html";
+        }
     }
+        
+        // alert('Your Percentage is ' + ((score / questions.length) * 100).toFixed(2))
+    
+
     else {
         ques.innerText = questions[index].question
         opt1.innerText = questions[index].option1
@@ -120,6 +132,7 @@ function nextQuestion() {
         index++
     }
 }
+
 
 nextQuestion()
 
